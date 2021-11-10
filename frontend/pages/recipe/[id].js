@@ -1,4 +1,4 @@
-import marked from 'marked';
+import { marked } from 'marked';
 import Link from 'next/link';
 
 const fullRecipe = ({ recipe }) => {
@@ -40,6 +40,11 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }) {
+  const getMarkdownText = (text) => {
+    const formattedText = marked(text);
+    return { __html: formattedText };
+  };
+
   const response = await fetch(`http://localhost:1337/recipes?id=${params.id}`);
   const recipes = await response.json();
   return {

@@ -4,9 +4,9 @@ export default function Header({setFilter, categories}) {
     <div className="header">
       <h3>Strapi Recipe Book</h3>
       <ul>
-        <li className="type" onClick={() => {setFilter(null)}}>All recipes</li>
+        <li className="category" onClick={() => {setFilter(null)}}>All recipes</li>
       {categories.map((category) => (
-        <li className="type" onClick={() => {setFilter(category.category)}}>{category.category}</li>
+        <li className="category" key={category.category} onClick={() => {setFilter(category.category)}}>{category.category}</li>
       ))}
       </ul>
     </div>

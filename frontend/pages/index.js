@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export default function Home({ recipes, categories }) {
   const [filter, setFilter] = useState('');
+
   return (
     <div>
       <Head>
@@ -15,7 +16,7 @@ export default function Home({ recipes, categories }) {
       <div id="recipe-container">
         {recipes.map((recipe) => {
           if (!filter || (filter && filter === recipe.category.category)) {
-            return <Recipe recipe={recipe} />;
+            return <Recipe recipe={recipe} key={recipe.id} />;
           }
         })}
       </div>
